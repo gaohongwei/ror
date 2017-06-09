@@ -1,0 +1,52 @@
+class Colors
+   COLOR1 = "\e[1;36;40m"
+   COLOR2 = "\e[1;35;40m"
+   NOCOLOR = "\e[0m"
+   RED = "\e[1;31;40m"
+   GREEN = "\e[1;32;40m"
+   DARKGREEN = "\e[0;32;40m"
+   YELLOW = "\e[1;33;40m"
+   DARKCYAN = "\e[0;36;40m"
+end
+
+class String
+   def color(color)
+      return color + self + Colors::NOCOLOR
+   end
+end
+
+
+"Hello World".color(Colors::DARKGREEN)
+
+# def colorize(text, color_code)
+#   "\e[#{color_code}m#{text}\e[0m"
+# end
+# def red(text); colorize(text, 31); end
+# def green(text); colorize(text, 32); end
+# def yellow(text); colorize(text, 33); end
+
+class String
+  def black;          "\e[30m#{self}\e[0m" end
+  def red;            "\e[31m#{self}\e[0m" end
+  def green;          "\e[32m#{self}\e[0m" end
+  def brown;          "\e[33m#{self}\e[0m" end
+  def blue;           "\e[34m#{self}\e[0m" end
+  def magenta;        "\e[35m#{self}\e[0m" end
+  def cyan;           "\e[36m#{self}\e[0m" end
+  def gray;           "\e[37m#{self}\e[0m" end
+
+  def bg_black;       "\e[40m#{self}\e[0m" end
+  def bg_red;         "\e[41m#{self}\e[0m" end
+  def bg_green;       "\e[42m#{self}\e[0m" end
+  def bg_brown;       "\e[43m#{self}\e[0m" end
+  def bg_blue;        "\e[44m#{self}\e[0m" end
+  def bg_magenta;     "\e[45m#{self}\e[0m" end
+  def bg_cyan;        "\e[46m#{self}\e[0m" end
+  def bg_gray;        "\e[47m#{self}\e[0m" end
+
+  def bold;           "\e[1m#{self}\e[22m" end
+  def italic;         "\e[3m#{self}\e[23m" end
+  def underline;      "\e[4m#{self}\e[24m" end
+  def blink;          "\e[5m#{self}\e[25m" end
+  def reverse_color;  "\e[7m#{self}\e[27m" end
+end
