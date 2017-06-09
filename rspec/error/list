@@ -1,0 +1,3 @@
+undefined method `call' for #<Array:0x007f871aa56768>
+
+Use described_class to replace the real class name

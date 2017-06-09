@@ -1,0 +1,2 @@
+expect(flash[:error]).to match(/Failed to delete the item./)
+expect(flash[:notice]).to match(/Syslog Receiver created/)

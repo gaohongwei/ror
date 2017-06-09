@@ -1,0 +1,4 @@
+
+Checked or not
+expect(rendered).to have_tag(:input, with: { class: 'optional', type: 'checkbox', id: 'template_with_logo', checked: 'checked' })
+expect(rendered).to have_tag(:input, with: { class: 'optional', type: 'checkbox', id: 'template_with_logo' })
