@@ -1,0 +1,11 @@
+<div class="breadcrumb">
+	<% columns.each_with_index do |col,index| %>
+		<% col,type=col.split(':') %>
+	  <div class="row">
+	      <strong><%= tt(captions[index]) %></strong>:
+	      <%=  get_attr(obj,col) %>
+	  </div>
+	<% end %>
+</div>
+<%#= debug columns %>
+<%#= debug captions %>

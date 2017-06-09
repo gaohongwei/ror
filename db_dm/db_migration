@@ -1,0 +1,24 @@
+
+rake db:migrate #runs all the migrations that have not yet been run. 
+rake db:migrate VERSION=20080906120000
+
+rake db:rollback        # revert the latest migration
+rake db:rollback STEP=3 # revert the last 3 migrations.
+rake db:migrate:redo STEP=3 # revert and rake db:migrate 
+
+rake db:setup
+#create the database, load the schema and initialize it with the seed data.
+
+rake db:reset 
+drop the database and set it up again. 
+rake db:drop db:setup.
+It will only use the contents of the current schema.rb file. 
+
+db:migrate:up and 
+db:migrate:down
+$ rake db:migrate:up VERSION=20080906120000
+will run the 20080906120000 migration by running the change/up method
+Will do nothing if it has already been run.
+
+rake db:migrate:up   VERSION=20080906120000
+rake db:migrate:redo VERSION=20080906120000

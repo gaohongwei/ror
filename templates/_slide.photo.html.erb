@@ -1,0 +1,37 @@
+<%######### Usage #########%>
+<%#= render partial:"shared/photo.slide",locals:{data:data,bottom_string:bottom_string} %>
+<%######### Define your variables #########%>
+<%######### data=@objs    #########%>
+<%######### bottom_string="" #########%>
+<%######### Do Calculation#########%>
+<%######### Display slide show #########%>
+<% cid=data.name %>
+<div id="<%=cid%>" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <% unless data.blank? %>
+      <div class="active item LoanRate">
+        <% ele=data.first %>   
+        <%= image_tag ele.item.url(:large) %>     
+        <%= display(ele.title) %>
+      </div>      
+    <% end %>
+    <% unless data.blank? %>
+    <% data.each do |ele| %>   
+    <div class="item ">
+      <%= image_tag ele.item.url(:large) %>     
+      <%= display(ele.title) %>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+  <div class="restrict"><%= bottom_string %></div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#<%=cid%>" data-slide="prev"><</a>
+  <a class="carousel-control right" href="#<%=cid%>" data-slide="next">></a>
+</div>
+<script type="text/javascript">
+  $(function(){ 
+     $("#<%=cid%>").carousel({interval: 2000})
+  });
+</script> 

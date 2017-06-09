@@ -1,0 +1,7 @@
+
+bundle exec thin start -p 3000
+ab -n 10000 -c 1000 http://172.16.16.136:3000/
+unicorn
+ab -n 10000 -c 1000 http://172.16.16.136:8080/
+puma -t 8:32
+ab -n 10000 -c 1000 http://172.16.16.136:9292/

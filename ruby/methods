@@ -1,0 +1,39 @@
+###### Protected ###### 
+Protected methods can be invoked only by objects of the defining class and its subclasses. 
+Access is kept within the family. However, usage of protected is limited.
+In case of protected methods, you can call them from the scope of any object belonging to the same class. 
+You can call an object's protected methods as long as the two obj are created from the same class.
+
+class Person
+  def older_than?(other_person)
+    age > other_person.age
+  end
+
+  protected
+  def age; @age; end
+end
+###### Private ###### 
+Private methods cannot be called with an explicit receiver - 
+the receiver is always self. 
+This means that private methods can be called only in the context of the current object; 
+you cannot invoke another object's private methods.
+Private methods cannot normally be invoked from outside the class that defines them. 
+But they are inherited by subclasses. 
+This means that subclasses can invoke them and can override them.
+
+An object of subclass can call methods of the parent class.
+class Parent
+  def f1; puts self.class;end
+end
+
+class Child < Parent; end
+
+obj = Child.new
+obj.f1 # Works
+
+###### Are instance variables inherited by a sub-class? ###### 
+Instance variables are per-object, not per-class, and they're not inherited. 
+But if a method uses one, and that method is available to subclasses, 
+then it will still use the variable 
+but "the variable" in the sense of one per object. 
+

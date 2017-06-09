@@ -1,0 +1,8 @@
+
+The End of Monkeypatching
+Step 1: Fork the Library
+Step 2: Make Your Changes
+Step 3: Change Your Gemfile
+Point your Gemfile at the new code:
+#gem 'xxxx'
+gem 'xxxx', :git => 'git://github.com/xaviershay/xxxx', :branch => 'important-fix'

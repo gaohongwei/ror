@@ -1,0 +1,49 @@
+<% position='left' %>
+<% if current_user && current_user.admin? %>
+  <% sys_menu=Menu.top %>
+<% else %>
+  <% sys_menu=Menu.top.gt_id(1) %>
+<% end %>
+
+<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-inner">
+      <div class="container" style="width: auto;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Home</a>
+        </div>
+        <% unless sys_menu.nil? ||sys_menu.empty? %>    
+        <% sys_menu.each do |amenu| %>
+        <div class="collapse navbar-collapse" id="navbarCollapse">        
+        <ul class="nav pull-left">
+          <li class="dropdown">
+            <%= link_to("#{amenu.title} <b class='caret'></b>".html_safe, "#", {class: "dropdown-toggle", 'data-toggle' => "dropdown"}) %>             
+            <ul class="dropdown-menu">
+            <% amenu.children.each do |item| %>
+              <% unless item == "---" %>
+                <li>
+                  <%= link_to(item.title, item.get_url) %>
+                </li>
+              <% else %>
+                <li class="divider"></li>
+              <% end %>
+            <% end %>
+            </ul>
+          </li>              
+        </ul>
+        <% end %> <%# end of each %>
+        <% end %> <%# end of unless %> 
+        <%############## Hard coded menu,singup/singin/logout ##############%>
+        <%= render 'shared/menu_signin' %>
+        <%############## Hard coded menu ##############%> 
+      </div> <%# container %>        
+      </div> <%# container %>
+    </div> <%# navbar-inner %>
+  </div> <%# container %>
+</div>

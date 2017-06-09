@@ -1,0 +1,22 @@
+1.Get data from url
+open("http://image.com/img.jpg") { |io| io.read }
+
+2. Encode
+ActiveSupport::Base64.encode64(open("http://image.com/img.jpg") { |io| io.read })
+
+3. Update paperclip attachment with encoded data
+tempfile = uploaded_file.path
+contents =File.open(tempfile, "rb") {|f| f.read }
+encoded = Base64.strict_encode64(contents)
+File.open(tempfile, 'wb') { |f|f.write(encoded)}
+
+base_fname = 'logo.txt' #File.basename(tempfile)
+head= "Content-Disposition: form-data; name=\"global_setting[image]\"; filename=\"#{base_fname}\"\r\nContent-Type: application/txt\r\n"
+uploaded_file = ActionDispatch::Http::UploadedFile.new(
+    tempfile: File.new(tempfile),
+    filename: 'logo.txt',
+    type: "application/txt",
+    head: head )
+
+self.image = uploaded_file
+self.save

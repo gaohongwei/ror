@@ -1,0 +1,39 @@
+    menus = [
+      {
+        position: 1,
+        title: 'Menu1',
+        subitems: [
+          {title: 'menu11', path: 'path11'},
+          {title: 'menu12', path: 'path12'},
+        ]
+      },
+      {
+        position: 2,
+        title: 'Menu2',
+        subitems: [
+          {title: 'menu21', path: 'path21'},
+          {title: 'menu22', path: 'path22'},
+        ]
+      }
+    ]
+
+amenu[:subitems] will be used for hash
+amenu.subitems   will be used for bd object
+<ul class="nav nav-tabs">
+<% (menus||[]).each do |amenu| %>
+  <li class="dropdown">
+    <%= link_to("#{amenu[:title]} <b class='caret'></b>".html_safe, "#", {class: "dropdown-toggle", 'data-toggle' => "dropdown"}) %>
+    <ul class="dropdown-menu">
+    <% amenu[:subitems].each do |item| %>
+      <% if item == "---" %>
+        <li class="divider"></li>  
+      <% else %>            
+        <li>
+          <%= link_to item[:title], item[:path] %>
+        </li>
+      <% end %>
+    <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>

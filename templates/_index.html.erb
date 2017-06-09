@@ -1,0 +1,31 @@
+<table class="table table-striped table-bordered table-condensed">
+<thead><tr>
+<% columns.each_with_index do |col,index| %>
+  <th>
+  <%= sort_col(sort_direction, sort_column, col,captions[index]) %>
+  </th>     
+<% end %>
+<th width='140px'><a href='#'><%= tt('actions') %></a></th>
+</tr></thead>
+
+<tbody>
+<% if objs.size > 0 %>
+  <% for obj in objs %>  
+    <tr>
+  		<% columns.each_with_index do |col,index| %>   
+        <% value =get_attr(obj,col) %>
+	 			<% if 0 == index %>
+	      	<td><%= link_to_ns value, obj %></td>
+				<% else %>  
+	      	<td><%= value %></td>
+				<% end %>
+			<% end %>  
+      <td><%= edit_delete(obj.id) %></td>  			 				 	
+    </tr>
+  <% end %>
+<% else %>
+    <tr><td colspan='10'><%= tt('empty') %></td></tr>
+<% end %>
+</tbody></table>
+<%#= debug columns %>
+<%#= debug captions %>

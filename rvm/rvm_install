@@ -1,0 +1,9 @@
+apt-get install software-properties-common
+sudo apt-add-repository ppa:rael-gc/rvm
+sudo apt-get update
+sudo apt-get install rvm
+
+apt-get install software-properties-common
+apt-add-repository ppa:brightbox/ruby-ng
+apt-get update
+apt-get install ruby2.2

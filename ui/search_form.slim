@@ -1,0 +1,13 @@
+- hidden_fields = [:cs_user, :class_name]
+.row.action-bar
+  .col-md-3
+    #search-section
+      strong.text-center
+      = simple_form_for "search", url: url, method: :get, remote: true, html: {id: :search_form} do |f|
+        - hidden_fields.each do |hfield|
+          = f.input_field hfield, as: :hidden
+        .filter-group.search-box
+          .right-inner-addon
+            i.glyphicon.glyphicon-search#search_icon
+            input.form-control#search_text placeholder='Search' maxlength='32' name='search[text]' value="#{search.text}"
+            = f.input_field 'search[text]', maxlength: 30,  placeholder: 'Search', value: search.text, id: "search_text", name: 'search[text]', class:'form-control'

@@ -1,0 +1,22 @@
+ssh-add ~/.ssh/wei_rsa.pub
+
+# ~/.ssh/config
+Host github.com
+    Hostname github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+Host gitwei.com
+    Hostname github.com
+    User git
+    IdentityFile ~/.ssh/wei_rsa
+
+git remote add git@gitwei.com/rails_topics.git
+
+git clone git@gitwei.com:gaohongwei/rails_topics.git
+git clone git@github.com/gaohongwei/rails_topics.git
+pan-git:foo/foo.git  # logs in with account foo
+git clone wei-git:gaohongwei/rails_topics.git
+https://github.com/gaohongwei/rails_topics
+
+git clone https://github.com/gaohongwei/rails_topics
+git clone git@gitcom.com:gaohongwei/rails_topics.git

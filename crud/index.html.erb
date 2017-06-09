@@ -1,0 +1,8 @@
+<%% columns  =<%= attributes.map{|a|a.name} %> %>
+<%%== page_header() %>
+<%%= search_area() %>
+<%%= page_link(@objs) %>
+<div class="breadcrumb">
+	<%%= index_me @objs,@sort_column, @sort_direction %>
+</div >
+<%%== link2actions() %>

@@ -1,0 +1,11 @@
+<% options={}%>
+<%= form_tag({action: "index"}, {method: :get, class: 'form-search'}) do %>
+  <%= text_field_tag("search", @search_value||params[:search], {size: 70, placeholder: placeholder, class: 'input-medium search-query span4'}) %>
+  <% unless caption_columns.nil? || caption_columns.empty? %>
+    <%= submit_tag(tt('search'), class: 'btn btn-warning') %>
+    <%= select_tag "search_column", 
+      options_for_select(
+      caption_columns,
+      {:class=>"input-medium btn btn-danger",:size => 10}) %>
+    <% end %>
+<% end %>

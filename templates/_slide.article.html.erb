@@ -1,0 +1,33 @@
+<%######### Usage #########%>
+<%#= render partial:"shared/photo.data",locals:{data:data, columns:columns,bottom_string:bottom_string} %>
+<%######### Define your variables #########%>
+<%######### data=@objs    #########%>
+<%######### bottom_string="" #########%>
+<%######### column='col1' #########%>
+<%######### Do Calculation#########%>
+<%######### Display slide show #########%>
+<% sid=random_name %>
+<div id="<%=sid%>" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <% unless data.blank? %>
+    <% data.each do |ele| %> 
+      <div class="item     
+      <%if 0 == index %>
+        active
+      <%end %>   
+        ">    
+      <%= display(ele,2) %>      
+      </div>
+    <% end %><% end %>
+  </div>
+  <div class="restrict"><%= bottom_string %></div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#<%=sid%>" data-slide="prev"><</a>
+  <a class="carousel-control right" href="#<%=sid%>" data-slide="next">></a>
+</div>
+<script type="text/javascript">
+  $(function(){ 
+     $("#<%=sid%>").carousel({interval: 2000})
+  });
+</script> 

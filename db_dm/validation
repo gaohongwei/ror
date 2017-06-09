@@ -1,0 +1,106 @@
+validate :customized_validation
+def customized_validation;end
+
+validates can be defined on methods
+on: :create
+on: :update
+
+validates :email, presence: true, uniquiness: true, format: 
+The content can be defined on validates
+  validates :email, presence: true, email: true
+  validates :name, :login, :email, presence: true  
+  uniqueness: true
+  uniqueness: { case_sensitive: false, scope: :cs_user }
+  uniqueness: { scope: [:type, :service_email] }
+  presence: true, 
+  absence: true
+  presence: true
+  acceptance: true
+  allow_blank: false
+  numericality: true 
+  numericality: { only_integer: true } 
+  length: { minimum: 3, minimum: 10, message: 'Maximum 500'}
+  length: { in: 6..20 }
+  length: { is: 5 }
+
+  validates :terms_of_service, acceptance: true, message: 'must be abided'
+  validates :terms_of_service, acceptance: { accept: 'yes' }
+  validates :eula, acceptance: { accept: ['TRUE', 'accepted'] }
+
+  format: { with: /\A[a-zA-Z]+\z/ }
+  format: { with: Devise.email_regexp, allow_blank: false }
+  validates :email, confirmation: true
+  validates :email, confirmation: { case_sensitive: false }
+  validates :email, uniqueness: { case_sensitive: false, allow_blank: false, scope: :cs_user }, 
+  validates :email, uniqueness: { case_sensitive: false, allow_blank: false, scope: :service_email }
+  validates :subdomain, exclusion: { in: %w(www us ca jp),
+    message: "%{value} is reserved." }
+
+  validates :size, inclusion: { in: %w(small medium large),
+    message: "%{value} is not a valid size" }
+  validates :boolean_field_name, exclusion: { in: [nil] }
+  validates :boolean_field_name, inclusion: { in: [true, false] }
+
+  validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/,
+    message: "only allows letters" }
+
+  validates :name, presence: { message: "must be given please" }
+  validates :age, numericality: { message: "%{value} seems wrong" }
+
+  validates :name, presence: { strict: true }
+  validates :token, presence: true, uniqueness: true, strict: TokenGenerationException
+
+  validates :card_number, presence: true, if: :paid_with_card?
+  validates :surname, presence: true, if: "name.nil?"
+
+  validates :name, uniqueness: { scope: :year,
+    message: "should happen once per year" }
+  validates :name, uniqueness: { case_sensitive: false }
+  
+
+validates :max, numericality: { only_integer: true, greater_than: 0 }, unless: 'keywords.blank?'
+validates :max, numericality: { only_integer: true, less_than_or_equal_to: 10_000, message: 'Maximum 10,000' }, unless: 'keywords.blank?'
+validates :max, numericality: { only_integer: true, greater_than: 0 }, unless: 'keywords.blank?'
+validates :max, numericality: { only_integer: true, greater_than: 0 }
+validates :max, numericality: { only_integer: true, less_than_or_equal_to: 10_000, message: 'Maximum 10,000' }
+validates :max, numericality: { only_integer: true, message: 'It is not a number' }
+validates :max, numericality: { greater_than: 0, message: 'It must be greater than 0' }
+
+
+
+5 Conditional Validation
+5.1 Using a Symbol with :if and :unless
+class Order < ApplicationRecord
+  validates :card_number, presence: true, if: :paid_with_card?
+ 
+  def paid_with_card?
+    payment_type == "card"
+  end
+end
+5.2 Using a String with :if and :unless
+class Person < ApplicationRecord
+  validates :surname, presence: true, if: "name.nil?"
+end
+5.3 Using a Proc with :if and :unless
+class Account < ApplicationRecord
+  validates :password, confirmation: true,
+    unless: Proc.new { |a| a.password.blank? }
+end
+5.4 Grouping Conditional validations
+class User < ApplicationRecord
+  with_options if: :is_admin? do |admin|
+    admin.validates :password, length: { minimum: 10 }
+    admin.validates :email, presence: true
+  end
+end
+All validations inside of the with_options block will have automatically passed the condition if: :is_admin?
+
+5.5 Combining Validation Conditions
+On the other hand, when multiple conditions define whether or not a validation should happen, an Array can be used. Moreover, you can apply both :if and :unless to the same validation.
+
+class Computer < ApplicationRecord
+  validates :mouse, presence: true,
+                    if: ["market.retail?", :desktop?],
+                    unless: Proc.new { |c| c.trackpad.present? }
+end
+The validation only runs when all the :if conditions and none of the :unless conditions are evaluated to true.

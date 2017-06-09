@@ -1,0 +1,13 @@
+= simple_form_for syslog_app, url: syslog_apps_path, method: :post do |f|
+    = f.input :name, placeholder: 'Name', required: false
+    = f.button :submit, 'Save', class: "btn-primary btn-lg save"
+    = ' '
+    = link_to 'Cancel', :back, class: "btn btn-default btn-lg back"
+    = link_to 'Cancel', syslog_global_settings_path, class: "btn btn-default btn-lg"
+
+
+    expect(rendered).to have_tag('input', with: { value: 'Save', class: "btn btn-primary btn-lg save" })
+    expect(rendered).to have_tag('a', text: 'Cancel', with: { class: "btn btn-default btn-lg back", href: "javascript:history.back()" })
+
+Index    
+td = link_to "Delete", syslog_receiver_path(receiver['config_id']), method: :delete, data: {confirm: "You sure?"}, class: 'btn btn-default pull-right'

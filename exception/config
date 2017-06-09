@@ -1,0 +1,25 @@
+gem 'exception_notification'
+
+env/staging.rb
+  developers_list = %w(bugs@abc.com)
+  config.middleware.use ExceptionNotification::Rack,
+                        email: {
+                          email_prefix: 'Staging: ',
+                          sender_address: %("notifier" <bugs@abc.com>),
+                          exception_recipients: developers_list
+                        }
+  config.action_mailer.default_url_options = { host: Settings.app_url, protocol: 'https' }
+  config.action_mailer.default_options = { from: 'support@abc.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = Settings.email_config.perform_deliveries
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default charset: 'utf-8'
+  config.action_mailer.smtp_settings = {
+    user_name: Settings.email_config.user_name,
+    password: Settings.email_config.password,
+    domain: Settings.email_config.domain,
+    address: Settings.email_config.address,
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }

@@ -1,0 +1,6 @@
+
+= simple_form_for @obj, url: apath, method: :post  do |f|
+  = f.input :name, placeholder: 'Name'
+
+= form_tag apath do |f|
+  = text_field_tag :name, 'Name'

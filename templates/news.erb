@@ -1,0 +1,44 @@
+<div class="strata-container container">
+
+  <div class="stratum-row row-fluid no-bottom-gradient" id="tertiary-nav">
+    <div class="span12 stratum" style="position: relative">
+      <div class="row-fluid">
+        <div class="subsubnav">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <ul class="nav">
+                <li class="current"><a>News & Press</a></li>
+                <li><a href="/news/media-resources">Media Resources</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stratum-row row-fluid ">
+    <div class="span12 stratum bottom-padding-30" id="stratum-3461" style="position: relative">
+
+      <div class="row-fluid">
+        <div class="row-fluid">
+          <div class="span12">
+            <h1>News Release</h1>
+
+            <h2><%= @article.title.html_safe %></h2>
+
+            <div>
+              <%= @article.content.html_safe %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+  $(function() {
+    $('.row-fluid.subnav').children().hide();
+  });
+</script>

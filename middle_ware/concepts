@@ -1,0 +1,15 @@
+Rack is a Ruby Webserver Interface
+Rack provides a minimal interface between webservers(Ruby) and Rails frameworks.
+
+Rack is a middleware
+Middleware is common library for common functions
+suach as logging, authentication 
+
+Rack divide a web request into separate stages
+Authentication
+Authorisation
+Caching
+Execution
+
+
+Action Dispatch routes requests to controllers

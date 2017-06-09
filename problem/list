@@ -1,0 +1,16 @@
+
+hangs
+rails g scaffold book name:string author:string
+
+rails 4
+rm -rf bin
+
+# generates binstubs for ALL gems in the bundle
+bundle install --binstubs
+
+# ...OR, generate binstubs for a SINGLE gem (recommended)
+bundle binstubs rake
+
+rails 5
+To reset the binstubs, just delete your bin/ directory in rails and run:
+rails app:update:bin

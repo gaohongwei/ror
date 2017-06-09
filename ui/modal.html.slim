@@ -1,0 +1,13 @@
+#id.modal.fade
+  .modal-dialog
+    .modal-content
+      = simple_form_for @obj, url: path, method: :post  do |f|
+        .modal-header
+          button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
+          h4.modal-title My Title
+        .modal-body
+          = f.input :name, placeholder: 'Name'
+        .modal-footer
+          = submit_tag "Save", class:'btn btn-primary'
+          button.btn.btn-default data-dismiss="modal" type="button"  Cancel
+

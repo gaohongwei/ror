@@ -1,0 +1,23 @@
+
+<% ns=get_namespace() %>
+<%if ns.nil?%>
+  <%= semantic_bootstrap_nested_form_for @obj do |f| %>
+  <%= f.inputs do %>
+		<% columns.each_with_index do |col,index| %>  
+    <%= f_input(f,col,captions[index]) %> 
+    <% end %>
+  <% end %>
+  <%= button_submit(f) %>
+  <% end %>  
+<% else %>
+  <%= semantic_bootstrap_nested_form_for([ns,@obj]) do |f| %>
+  <%= f.inputs do %>
+    <% columns.each_with_index do |col,index| %>  
+    <%= f_input(f,col,captions[index]) %> 
+    <% end %>
+  <% end %>  
+  <%= button_submit(f) %>
+  <% end %>  
+<%end%>  
+<%#= debug columns %>
+<%#= debug captions %>

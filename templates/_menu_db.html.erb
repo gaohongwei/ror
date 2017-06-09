@@ -1,0 +1,59 @@
+<% position='left' %>
+<% if current_user %>
+  <% if current_user.admin? %>
+    <% sys_menu=Menu.top %>
+  <% else %>  
+    <% sys_menu=Menu.top.gt_id(2) %>
+  <% end %>    
+<% else %>
+  <% sys_menu=Menu.top.gt_id(2) %>
+<% end %>
+
+<%# navbar-inverse navbar-fixed-top%>
+<nav id="myNavbar" class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="col-md-1"></div>
+  <div class="col-md-10">    
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+        <% if tt('menu') == 'menu' || tt('menu') == 'Menu' %>
+          <span class="icon-bar"></span>          
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        <%else%>
+          <span><%=tt('menu')%></span>          
+        <%end%>          
+      </button>
+    </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="menu">
+        <% unless sys_menu.nil? ||sys_menu.empty? %>    
+        <% sys_menu.each do |amenu| %>      
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <%= link_to("#{amenu.title} <b class='caret'></b>".html_safe, "#", {class: "dropdown-toggle", 'data-toggle' => "dropdown"}) %>             
+            <ul class="dropdown-menu">
+            <% amenu.children.each do |item| %>
+              <% unless item == "---" %>
+                <li>
+                  <%= link_to(item.title, item.get_url) %>
+                </li>
+              <% else %>
+                <li class="divider"></li>
+              <% end %>
+            <% end %>
+            </ul>
+          </li>              
+        </ul>
+        <% end %> <%# end of each %>
+        <% end %> <%# end of unless %> 
+        <%############## Hard coded menu,singup/singin/logout ##############%>
+        <%= render 'shared/menu_signin' %>
+        <%############## Hard coded menu ##############%> 
+    </div> <%# collapse %>        
+  </div> <%# container %>
+  </div>
+  <div class="col-md-1"></div>  
+</nav>
+
