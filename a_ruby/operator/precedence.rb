@@ -1,5 +1,5 @@
 Short list (high to low precedence)
-= &&  || or and  if 
+&&  || = or and  if 
 
 a = false && true
 b = false and true
