@@ -1,3 +1,9 @@
+%r{... } : (/... /)
+  expect(rendered).to match %r{<tr><td></td></tr>}
+##### Regular expression with variable name #####
+var='food'
+s =~ /^#{var}$/
+if s =~/^#{var}$/ 
 #######################################
 ## Add id according to class name
 #file_names = ['foo.txt', 'bar.txt']
