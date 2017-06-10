@@ -1,9 +1,3 @@
-%r{... } : (/... /)
-  expect(rendered).to match %r{<tr><td></td></tr>}
-##### Regular expression with variable name #####
-var='food'
-s =~ /^#{var}$/
-if s =~/^#{var}$/ 
 ##### Capture match #####
 string = "RyanOnRails: This is a test"
 string =~ /(^.*)(:)(.*)/
