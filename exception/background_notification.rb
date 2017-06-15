@@ -3,7 +3,8 @@ https://github.com/smartinez87/exception_notification
 My Sample:
   ExceptionNotifier.notify_exception(Exception.new,
     :data => {:message => "This is raised by Kevin Wei"})  
-    
+  ExceptionNotifier.notify_exception(exception, data: { id: id })
+
 Background Notifications
 
 If you want to send notifications from a background process like DelayedJob, you should use the notify_exception method like this:
