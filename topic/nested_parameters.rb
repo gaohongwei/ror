@@ -1,3 +1,4 @@
+https://www.pluralsight.com/guides/ruby-ruby-on-rails/ruby-on-rails-nested-attributes
 class Variant < ActiveRecord::Base
   belongs_to :product
   # Attributes: name:string, price:float
