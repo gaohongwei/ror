@@ -1,3 +1,9 @@
+Three ways to call method
+obj = Object.new
+obj.nil?
+obj.send(:nil?)
+obj.method(:nil?).call
+
 ###### Protected ###### 
 Protected methods can be invoked only by objects of the defining class and its subclasses. 
 Access is kept within the family. However, usage of protected is limited.
