@@ -1,3 +1,9 @@
+A regular expression literal is a pattern between slashes or
+between arbitrary delimiters followed by %r
+s =~ /abc/
+s =~ %r(abc)
+s =~ %r|abc|
+
 %r{... } : (/... /)
   expect(rendered).to match %r{<tr><td></td></tr>}
 ##### Regular expression with variable name #####
