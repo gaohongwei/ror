@@ -16,6 +16,7 @@ rescue
 #?.. exception is rescued  
 else  
 #.. executes if there is no exception  
+retry # program will run from the begin block  
 ensure  
 #.. This code will always execute.  
 end  
