@@ -9,6 +9,17 @@ Background Notifications
 
 If you want to send notifications from a background process like DelayedJob, you should use the notify_exception method like this:
 
+begin  
+code..  
+#..raise exception  
+rescue  
+#?.. exception is rescued  
+else  
+#.. executes if there is no exception  
+ensure  
+#.. This code will always execute.  
+end  
+
 begin
   some code...
 rescue => e
