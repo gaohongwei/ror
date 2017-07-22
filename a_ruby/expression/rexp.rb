@@ -5,7 +5,12 @@ s =~ %r(abc)
 s =~ %r|abc|
 
 %r{... } : (/... /)
-  expect(rendered).to match %r{<tr><td></td></tr>}
+expect(rendered).to match %r{<tr><td></td></tr>}
+
+##### Regular expression constant #####
+PATTERN = /[a-zA-Z0-9]/
+s =~ PATTERN
+
 ##### Regular expression with variable name #####
 var='food'
 s =~ /^#{var}$/
