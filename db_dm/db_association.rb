@@ -1,3 +1,12 @@
+======== Explaination and sample ========
+:source define the associated model name for has_many through association
+:class_name define model name in a simple foreign key relationship. 
+  has_many :owned_group, class_name: 'Group'
+  has_many :joined_group, -> { where(user_groups: { status: 3 }) }, through: :user_groups, source: :group
+  has_many :applied_group, -> { where(user_groups: { status: 1 }) }, through: :user_groups, source: :group
+  has_many :accepted_group, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
+  has_many :approved_group, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
+
 ======== Sample ========
 rails g model group name:string parent_id:integer
 
@@ -30,12 +39,6 @@ has_many/has_one/belongs_to
 Rails assumes that the column used to hold the foreign key on the other model is 
 the name of this model with the suffix _id added. 
 If not, you need specify class_name
-
-======== :source ========
-The :source option specifies the source association name for a 
-has_many/has_one :through association. 
-:source is used (optionally) to define the associated model name when you're using has_many  through; 
-:class_name is used (optionally) in a simple has many relationship. 
 
 ======== :primary_key ========
 Haven't found use case yet
