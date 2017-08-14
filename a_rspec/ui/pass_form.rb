@@ -16,3 +16,11 @@ RSpec.describe 'p1.html.slim', type: :view do
     end
   end
 end
+
+
+
+  let(:form) do
+    my_form = nil
+    simple_form_for(user_activity_policy) { |f| my_form = f }
+    my_form
+  end
