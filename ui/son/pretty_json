@@ -1,0 +1,2 @@
+  var str = #{ruby_hash.to_json.html_safe}
+  $('#id').val(JSON.stringify(str, undefined, 4));
