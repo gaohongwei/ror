@@ -1,0 +1,32 @@
+#### gemset ####
+A gemset is just a container 
+keep gems separate from each other
+The Big Idea: creating a gemset per project allows you to 
+change gems (and gem versions) for one project 
+without breaking all your other projects
+
+
+#### install latest ruby ####
+$ rvm list known
+$ rvm install ruby 2.2.0
+$ rvm install ruby 2.4.0
+
+#### create gemset ####
+Create gemset for Ruby 2.2.0
+$ rvm gemset list
+$ rvm 2.2.0
+$ gem install rails -v 4.2.5
+$ rvm gemset create rails425
+Gemset 'rails425' created.
+
+#### Create gemset for Ruby 2.4.0 ####
+$ rvm 2.4.0@rails425 
+Gemset 'rails425' does not exist, 'rvm ruby-2.4.0 do rvm gemset create rails425' first, or append '--create'.
+$ rvm 2.4.0
+$ rvm gemset create rails425
+
+$ rvm 2.2.0@rails425
+
+ #### Check ####
+$ rvm 2.2.0@rails425 ; ruby -v
+$ rvm 2.4.0@rails425 ; ruby -v
