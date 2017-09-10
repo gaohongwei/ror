@@ -31,3 +31,4 @@ or
 Rack::Handler::WEBrick.run app 
 
 $ rackup config.ru
+$ rackup
