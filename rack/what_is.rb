@@ -3,6 +3,7 @@ A minimal interface between webservers and Ruby frameworks.
 The webservers need to support Ruby
 
 ##### How to use Rack #####
+A Rack application can be defined as an object which responds to #call method. 
 Provide an object that responds to the call method
   taking the environment hash as a parameter, 
   returning an array with three elements:
