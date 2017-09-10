@@ -46,3 +46,11 @@ end
 
 run RackApp
 
+##### Class vs Object #####
+A Rack object inside config.ru, 
+will be reused as long as Rack application runs. 
+It means that the content of instance variables will be carried 
+between requests if not set otherwise. 
+
+It is a better idea to always define #call as a class method, 
+i.e. pass in the class instead of an object inside rackup configuration file.
