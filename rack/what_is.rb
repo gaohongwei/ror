@@ -24,7 +24,10 @@ end
 
 ##### start rack #####
 # config.ru
-run Proc.new { |env| ['200', {'Content-Type' => 'text/html'}, ['get rack\'d']] }
+app = Proc.new { |env| ['200', {'Content-Type' => 'text/html'}, ['get rack\'d']] }
+app = JSONServer.new
+run app
+or 
+Rack::Handler::WEBrick.run app 
 
 $ rackup config.ru
-
