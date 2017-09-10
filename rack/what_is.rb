@@ -29,7 +29,20 @@ app = Proc.new { |env| ['200', {'Content-Type' => 'text/html'}, ['get rack\'d']]
 app = JSONServer.new
 run app
 or 
+run a Rack application just with ruby command
 Rack::Handler::WEBrick.run app 
+Rack::Server.start app: app
+Rack::Handler::Thin.run app
 
 $ rackup config.ru
 $ rackup
+
+##### Rack Apps as Ruby Objects #####
+class RackApp
+  def self.call(env)
+    [200, {"Content-Type" => "text/plain"}, ["Hello, Zaiste!"]]
+  end
+end
+
+run RackApp
+
