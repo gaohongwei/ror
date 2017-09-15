@@ -54,7 +54,6 @@ group :development, :test do
   gem 'mongoid-rspec', '3.0.0'
   gem 'rspec-rails'
   gem 'email_spec'
-  gem 'awesome_print', require: true
   gem 'rails_best_practices'
   gem 'rubocop', require: false
   gem 'rubocop-rspec'
@@ -67,9 +66,12 @@ group :development, :test do
   gem 'guard-cucumber'
   gem 'guard-rubocop'
   gem 'guard-brakeman'
+  
   gem 'pry'
-  gem 'pry-coolline'
   gem 'pry-nav'
+  gem 'pry-coolline'
+  gem 'awesome_print', require: true
+  
   gem 'jasmine'
   # gem 'guard-rails_best_practices' this gem is too old
 end
