@@ -1,4 +1,5 @@
 From Rails3 to Rails4
+##### undefined method `sweep' #####
 Production NoMethodError: undefined method `sweep' for {"discard"=>[], "flashes"=>{"just_switched"=>true}}:Hash
 Error Message: NoMethodError: undefined method `sweep' for {"discard"=>[], "flashes"=>{"just_switched"=>true}}:Hash
 class Hash
@@ -17,3 +18,5 @@ class Hash
     Rails.logger.warn "Stubbing sweep during upgrade"
   end
 end
+
+
