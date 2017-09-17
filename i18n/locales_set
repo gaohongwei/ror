@@ -1,4 +1,16 @@
+http://edgeguides.rubyonrails.org/i18n.html
+
 i18n/lib/i18n/config.rb
 
 I18n.config.available_locales_set
 I18n.config.available_locales
+I18n.available_locales
+
+I18n.
+load_path                 # Announce your custom translation files
+locale                    # Get and set the current locale
+default_locale            # Get and set the default locale
+available_locales         # Whitelist locales available for the application
+enforce_available_locales # Enforce locale whitelisting (true or false)
+exception_handler         # Use a different exception_handler
+backend 
