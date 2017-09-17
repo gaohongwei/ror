@@ -1,2 +1,4 @@
+i18n/lib/i18n/config.rb
 
 I18n.config.available_locales_set
+I18n.config.available_locales
