@@ -130,4 +130,16 @@ Multivers.define :cfg do
   dimension :tenant,
             fallbacks: {stream: :cfg}
 end
+
+Multivers.define :cfg do
+  schema :extension do
+    cfg :v1, 30
+  end
+  rule({tenant: :wowork, operator: :not}, {country: [:uk, :us],  operator: :not}) do
+    namespace :extension do
+      cfg :v1, 60
+      cfg :v2, 60
+    end
+  end
+end
 binding.pry
