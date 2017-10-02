@@ -43,6 +43,16 @@ module Multivers
       return KeyValuePairs.new(@deafults[method]) if schemas.include?(method)
       super
     end
+    
+    def set_context(dimension_name, value)
+      fail "set context for [#{@dimensions}], got [#{dimension_name}]" unless dimension=@dimensions[dimension_name]
+      @context[dimension_name] = value
+      compute_context
+    end
+
+    def compute_context
+      @context_hash = @context.hash
+    end
 
     private
 
