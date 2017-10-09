@@ -1,3 +1,6 @@
+gem 'chromedriver-helper' # <- New!   
+# brew install chromedriver #for mac 
+
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
