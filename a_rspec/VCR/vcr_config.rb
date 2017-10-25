@@ -1,5 +1,24 @@
 require 'vcr'
 
+RSpec.configure do |config|
+  config.include Helpers
+  config.include ResourceHelpers
+  config.include RspecLoginHelpers
+  config.include WeworkActivationHelpers
+
+  config.infer_spec_type_from_file_location!
+  config.mock_with :rspec
+  config.before(:each) do
+    time_now = "1508523649.04283"
+    allow_any_instance_of(LoginService).to receive(:current_time).and_return(time_now)      
+  end  
+  config.before(:all) do
+    Tenant.set_current_from_name('common')
+    time_now = "1508523649.04283"
+    allow_any_instance_of(LoginService).to receive(:current_time).and_return(time_now)            
+  end
+end
+
 SKIP_REQUEST_PARAMS= [] #%w(time signature)
 
 def request_match?(req1,req2)
