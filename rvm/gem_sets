@@ -12,6 +12,7 @@ $ rvm install ruby 2.2.0
 $ rvm install ruby 2.4.0
 
 #### create gemset ####
+# order: choose ruby version, install rails, create gemset
 Create gemset for Ruby 2.2.0
 $ rvm gemset list
 $ rvm 2.2.0
