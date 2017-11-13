@@ -1,0 +1,2 @@
+
+_process_action_callbacks.map { |c| c.filter if c.kind == :before }
