@@ -14,3 +14,6 @@ bundle binstubs rake
 rails 5
 To reset the binstubs, just delete your bin/ directory in rails and run:
 rails app:update:bin
+
+# rails c, hanging
+rake rails:update:bin
