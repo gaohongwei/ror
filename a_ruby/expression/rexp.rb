@@ -10,7 +10,8 @@ expect(rendered).to match %r{<tr><td></td></tr>}
 ##### Regular expression constant #####
 PATTERN = /[a-zA-Z0-9]/
 s =~ PATTERN
-
+if s.match(PATTERN)
+  
 ##### Regular expression with variable name #####
 var='food'
 s =~ /^#{var}$/
