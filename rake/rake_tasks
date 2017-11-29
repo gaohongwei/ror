@@ -1,0 +1,40 @@
+#rails g task test feature
+lib/tasks/test.rake
+
+
+4 Ways to Pass Arguments to a Rake Task
+http://cobwwweb.com/4-ways-to-pass-arguments-to-a-rake-task
+Method #1: The Rake Way
+task :add, [:num1, :num] do |t, args|
+  puts args[:num1].to_i + args[:num].to_i
+end
+rake add[1,2]
+
+Method #2: Environment Variables
+task :add do
+  puts ENV['NUM1'].to_i + ENV['NUM2'].to_i
+end
+rake add NUM1=1 NUM2=2
+
+Method #3: Using ARGV
+task :add do
+  ARGV.each { |a| task a.to_sym do ; end }
+  puts ARGV[1].to_i + ARGV[2].to_i
+end
+rake add 1 2
+
+Method #4: Ruby OptionParser
+require 'optparse'
+task :add do
+  options = {}
+  OptionParser.new do |opts|
+    opts.banner = "Usage: rake add [options]"
+    opts.on("-o", "--one ARG", Integer) { |num1| options[:num1] = num1 }
+    opts.on("-t", "--two ARG", Integer) { |num2| options[:num2] = num2 }
+  end.parse!
+
+  puts options[:num1].to_i + options[:num2].to_i
+  exit
+end
+
+rake add -- --one 1 --two 2
