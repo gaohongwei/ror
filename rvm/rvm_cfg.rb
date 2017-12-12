@@ -6,6 +6,7 @@ rvm  2>/dev/null >/dev/null || \curl -sSL https://get.rvm.io | bash -s stable --
 =================== Install Ruby New Version (Rails/gemset)
 source /etc/profile.d/rvm.sh
 rvm install 2.2.1
+rvm uninstall 2.2.1
 rvm use 2.2.1 #rvm list
 rvm gemset create web1.0
 rvm 2.2.1@web1.0 #rvm gemset list
