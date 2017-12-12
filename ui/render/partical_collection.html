@@ -1,7 +1,12 @@
-<%= render partial: "product", collection: @products, as: :item %>
-<%= render partial: "product", collection: @products %>
-<%= render partial: "product", collection: @products, 
-  as: :item, locals: {title: "Products Page"} %>
+<%= render partial: 'table_row',
+  collection: rows, 
+  as: :row,
+  locals: {columns: columns, captions: captions} %>
+  
+<%= render partial: "product", 
+  collection: @products, 
+  as: :item, 
+  locals: {title: "Products Page"} %>
 
 Partials are very useful in rendering collections.
 When you pass a collection to a partial via the :collection option,
