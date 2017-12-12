@@ -4,3 +4,13 @@ def show
     format.js { render 'hello.js.erb' }
   end
 end
+
+
+ERB
+$('#dom').replaceWith("<%= j render 'partial' %>");
+
+Slim
+|
+  $('#dom').replaceWith("#{j render 'partial'}")
+
+j = escape_javascript
