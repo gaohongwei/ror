@@ -7,6 +7,7 @@ Rails.application.config
 Rails.application.config.action_mailer
 Rails.application.config.<your_variable>
 Rails.application.config.instance_variables
+Rails.application.config.paths['db/migrate']
 
 ============= Routes
 Rails.application.routes
