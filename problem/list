@@ -20,4 +20,4 @@ rake rails:update:bin
 
 
 # undefined attachment for paperclip
-Use def self.change in the adding attachment migration
+Use def self.change instead of def self.up in the adding attachment migration
