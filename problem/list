@@ -17,3 +17,7 @@ rails app:update:bin
 
 # rails c, hanging
 rake rails:update:bin
+
+
+# undefined attachment for paperclip
+Use def self.change in the adding attachment migration
