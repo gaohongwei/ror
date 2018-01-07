@@ -1,40 +1,17 @@
-======== Explaination and sample ========
+======== source ========
 :source define the associated model name for has_many through association
-:class_name define model name in a simple foreign key relationship. 
-
-1. has_many through sample,  source/foreign_key
-  rgu project    name:string
-  rgu data_file  name:string 
-  rgu project_file  project_id:integer file_id:integer
-
-  class Project 
-    has_many :project_files
-    has_many :files,  through: :project_files,  source: :data_file
-  end
-
-  class ProjectFile 
-    belongs_to :project
-    belongs_to :data_file, foreign_key: :file_id
-  end  
-2. has_many through sample,  source
-  has_many :owned_groups, class_name: 'Group'
-  has_many :joined_groups, -> { where(user_groups: { status: 3 }) },   through: :user_groups, source: :group
-  has_many :applied_groups, -> { where(user_groups: { status: 1 }) },  through: :user_groups, source: :group
-  has_many :accepted_groups, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
-  has_many :approved_groups, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
-
-======== Sample ========
-rails g model group name:string parent_id:integer
-
 ======== :class_name ========
-apply to has_many/has_one/belongs_to
+:class_name define model name in a simple foreign key relationship.     
+apply to belongs_to/has_many/has_one(no through)
 If the name of the other model cannot be derived from the association name, 
 you can use the :class_name option to supply the model name.
 class_name: 'Group'
-
 ======== :foreign_key ========
 The :foreign_key option lets you set the name of the foreign key.
-Can be on belongs_to and has_many
+Can be on belongs_to and has_many (no through) 
+======== Sample ========
+rails g model group name:string parent_id:integer
+
 class Employee < ActiveRecord::Base
 #rails g  model employee name:string mgr_id:integer
   belongs_to :boss, foreign_key: :mgr_id, class_name: 'EmployeeA'
