@@ -1,11 +1,11 @@
 ======== Explaination and sample ========
 :source define the associated model name for has_many through association
 :class_name define model name in a simple foreign key relationship. 
-  has_many :owned_group, class_name: 'Group'
-  has_many :joined_group, -> { where(user_groups: { status: 3 }) }, through: :user_groups, source: :group
-  has_many :applied_group, -> { where(user_groups: { status: 1 }) }, through: :user_groups, source: :group
-  has_many :accepted_group, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
-  has_many :approved_group, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
+  has_many :owned_groups, class_name: 'Group'
+  has_many :joined_groups, -> { where(user_groups: { status: 3 }) },   through: :user_groups, source: :group
+  has_many :applied_groups, -> { where(user_groups: { status: 1 }) },  through: :user_groups, source: :group
+  has_many :accepted_groups, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
+  has_many :approved_groups, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
 
 ======== Sample ========
 rails g model group name:string parent_id:integer
