@@ -1,9 +1,9 @@
 // 1. Pass  data from rails to javascript
-  // slim
+  // slim, cannot pass array
   var sheet_columns = "#{rails_var}"; 
   // erb
-  var sheet_columns = <%= rails_var %>
-
+  var js_array = <%= rails__array %>
+  var js_var = <%= rails_var %>
 // 2. Set data in html
   // erb
   <div class="user-details" data-user-id="<%= @user.id %>">
