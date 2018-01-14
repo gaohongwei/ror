@@ -1,5 +1,6 @@
 // 1. Pass  data from rails to javascript
   // slim, cannot pass array
+  var js_array = #{raw rails__array};
   var sheet_columns = "#{rails_var}"; 
   // erb
   var js_array = <%= rails__array %>
@@ -10,8 +11,6 @@
   </div>
 
   //slim
-
-
   .checkbox-label.pull-left data-id="123"
 
     $(".checkbox-label").click( function(event){
