@@ -9,7 +9,12 @@ class_name: 'Group'
 ======== :foreign_key ========
 The :foreign_key option lets you set the name of the foreign key.
 Can be on belongs_to and has_many (no through) 
-======== Sample ========
+======== Sample 1 ========  
+class MlMethod 
+  has_many :parameters, foreign_key: :method_id, class_name: 'MethodParameter'
+end 
+rails method MethodParameter method_id:integer  
+======== Sample 2 ========
 rails g model group name:string parent_id:integer
 
 class Employee < ActiveRecord::Base
