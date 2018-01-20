@@ -1,9 +1,23 @@
 ##### What is a Rack #####
-A minimal interface between webservers and Ruby frameworks.
+A minimal interface between webservers and web application(RoR frameworks)
 The webservers need to support Ruby
+
+A Rack app
+  divide a web request into separate stages
+  take each middleware as a filter
+  can be used to intercept a request and alter the response
+  group and order modules, Ruby classes
+  specify dependency between them
+
+$ rake middleware
+  Authentication
+  Authorisation
+  Caching
+  Execution
 
 ##### How to use Rack #####
 A Rack application can be defined as an object which responds to #call method. 
+Can be one middleware
 Provide an object that responds to the call method
   taking the environment hash as a parameter, 
   returning an array with three elements:
@@ -11,17 +25,9 @@ Provide an object that responds to the call method
       The HTTP response code
       A Hash of headers
       Body
-##### Samples #####
-class JSONServer
-  def call(env)
-    [200, {"Content-Type" => "application/json"}, ['{ "message" : "Hello!" }']]
-  end
-end
-
-JSONServer.new or 
-app = Proc.new do |env|
-    ['200', {'Content-Type' => 'text/html'}, ['A barebones rack app.']]
-end
+#####Rack::Response #####
+  Rack::Response
+  Its object requires a response having each method
 
 ##### start rack #####
 # config.ru
