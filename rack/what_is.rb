@@ -28,6 +28,7 @@ Provide an object that responds to the call method
 #####Rack::Response #####
   Rack::Response
   Its object requires a response having each method
+  Rack::Response.new(bodymap, status, headers).finish
 
 ##### start rack #####
 # config.ru
