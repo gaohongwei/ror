@@ -1,0 +1,18 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: development
+  username: root
+  password: 
+  timeout: 10 # seconds?
+  wait_timeout: 10  
+  reconnect: true   
+  host: localhost
+
+MYSQL Docs say :
+ 1. wait_timeout : The number of seconds the server waits for activity on a
+   noninteractive connection before closing it. The default value is 28800.
+
+ 2. connect_timeout : The number of seconds that the mysqld server waits for
+   a connect packet before responding with Bad handshake. The default value is 10 seconds.
+connect_timeout mysql is mapped to timeout defined in data_base.yml rails which is set to 5 seconds default.
