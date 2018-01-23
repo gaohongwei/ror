@@ -14,6 +14,14 @@ $ rake middleware
   Authorisation
   Caching
   Execution
+##### list middleware in rack application #####
+middleware = []
+app = Rack::Builder.parse_file('config.ru').first
+
+while(app)
+ middleware << app.to_s
+ app = app.instance_eval{@target} 
+end
 
 ##### How to use Rack #####
 A Rack application can be defined as an object which responds to #call method. 
