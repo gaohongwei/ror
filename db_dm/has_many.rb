@@ -7,7 +7,8 @@ If the name of the other model cannot be derived from the association name,
 you can use the :class_name option to supply the model name.
 class_name: 'Group'
 ======== :foreign_key ========
-The :foreign_key option lets you set the name of the foreign key.
+The :foreign_key option lets you set the name of the foreign key 
+  used in the other model
 Can be on belongs_to and has_many (no through) 
 ======== Sample 1 ========  
 class MlMethod 
