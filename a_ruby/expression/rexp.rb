@@ -12,6 +12,13 @@ PATTERN = /[a-zA-Z0-9]/
 s =~ PATTERN
 if s.match(PATTERN)
   
+##### Create Regular expression constant from string #####
+  PATTERN_STRING = '\\A/v1|\\A/v2'
+  PATTERN_REGX = Regexp.new(PATTERN_STRING) 
+  '/v1' =~ PATTERN_REGX
+  '/v2' =~ PATTERN_REGX  
+  '/v3' =~ PATTERN_REGX  
+  
 ##### Regular expression with variable name #####
 var='food'
 s =~ /^#{var}$/
