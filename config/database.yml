@@ -1,0 +1,42 @@
+pgsql: &pgsql
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_development
+  pool: 5
+  username: myapp
+  password: password
+local_mysql: &local_mysql
+  adapter: mysql2
+  encoding: utf8
+  pool: 25
+  username: root
+  password: password
+mysql: &mysql
+  adapter: mysql2
+  encoding: utf8
+  pool: 25
+  username: root
+  password: password
+  host: 127.0.0.1
+  port: 3306
+  database: "database name"
+sqlite: &sqlite
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/config_db.sqlite3
+config_db:
+  <<: *sqlite
+  database: db/config_db.sqlite3
+customer_db:
+  <<: *sqlite
+  database: db/customer_db.sqlite3
+development:
+  <<: *sqlite
+  database: db/development.sqlite3
+production:
+  <<: *mysql
+  database: db_production
+test:
+  <<: *mysql
+  database: db_test
