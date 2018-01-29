@@ -11,3 +11,7 @@
   stub_const('ENV', {'RACK_ENV' => 'production'})
   stub_const("::Session", double(:session, key: 'key'))  
   ENV.stub(:[]).with("RACK_ENV").and_return("production")
+
+## Stub global hash variables
+  allow($servers).to receive(:[]).with(:hz_version).and_return('3.1')
+  $servers.stub(:[]).with(:hz_version).and_return('3.1')
