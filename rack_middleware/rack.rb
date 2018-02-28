@@ -51,6 +51,7 @@ Rack::Handler::Thin.run app
 
 $ rackup config.ru
 $ rackup
+$ rackup -p 3001
 
 ##### Rack Apps as Ruby Objects #####
 class RackApp
