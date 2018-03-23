@@ -1,3 +1,4 @@
+http://api.rubyonrails.org/classes/ActionView/PartialRenderer.html
 https://apidock.com/rails/ActionController/Base/render
 http://railscasts.com/episodes/100-5-view-tips
 
