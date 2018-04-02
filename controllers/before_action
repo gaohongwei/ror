@@ -1,0 +1,9 @@
+
+before_filter :deny_access, :unless => :draft_and_admin?
+
+
+From Rails 5.2 onwards, the current accepted answer will no longer be valid, 
+and passing a string to the conditional will fail.
+
+before_action :check_stuff, :if => proc {Rails.env.production?} # 5.2
+before_action :check_stuff, if: "Rails.env.production?" # 4.0
