@@ -7,3 +7,7 @@ and passing a string to the conditional will fail.
 
 before_action :check_stuff, :if => proc {Rails.env.production?} # 5.2
 before_action :check_stuff, if: "Rails.env.production?" # 4.0
+
+skip_before_filter :load1, :load2, :if => proc { request.xhr? }
+skip_before_filter :load1, :load2,  if: -> { request.xhr? }
+skip_before_filter :load1, :load2,  if: ->(arg) { request.xhr? && arg }
