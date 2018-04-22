@@ -1,3 +1,8 @@
+= render partial: partial,
+  collection: objs, as: :obj,
+  cached: true,
+  locals: {columns: columns, captions: captions}
+
 <%= render partial: 'table_row',
   collection: rows, 
   as: :row,
