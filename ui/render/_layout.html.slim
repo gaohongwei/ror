@@ -1,0 +1,13 @@
+
+= render layout: 'index_layout' do
+  = render @table_partial ,objs: @table_rows, cap_cols: @cap_cols
+
+#index_layout
+- if @check
+  = render 'partial1'
+  = yield
+- else
+  = render 'partial2'  
+  = yield
+
+#problem
