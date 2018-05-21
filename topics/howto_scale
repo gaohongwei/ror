@@ -4,3 +4,12 @@ https://rubygarage.org/blog/ruby-on-rails-is-scalable
 How To Scale Ruby on Rails 
 Applications Across Multiple Droplets (Part 1)
 https://www.digitalocean.com/community/tutorials/how-to-scale-ruby-on-rails-applications-across-multiple-droplets-part-1
+
+
+Call flow
+Client
+nginx
+Ror UI
+Rest API
+Redis
+DB

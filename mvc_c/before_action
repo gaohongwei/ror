@@ -1,4 +1,8 @@
 
+Check filters by type
+_process_action_callbacks.map { |c| c.filter if c.kind == :before }
+
+
 before_filter :deny_access, :unless => :draft_and_admin?
 
 

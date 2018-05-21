@@ -1,3 +1,4 @@
+bin/spring status
 
 hangs
 rails g scaffold book name:string author:string

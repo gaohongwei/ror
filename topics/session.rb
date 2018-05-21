@@ -2,8 +2,8 @@
   HTTP is a stateless protocol. 
   Sessions make it stateful.
 
-  Without the idea of sessions, the user would have to identify and  authenticate on every request. 
-
+  Without the idea of sessions, the user would have to 
+  identify and  authenticate on every request. 
 
   A session usually consists of a hash of values and a session ID, 
   usually a 32-character string, to identify the hash. 

@@ -1,6 +1,17 @@
 Unicorn vs. Puma vs. Passenger: which app server is right for you?
 http://blog.scoutapp.com/articles/2017/02/10/which-ruby-app-server-is-right-for-you
 
+Unicorn vs. Puma,  Gems
+Passenger, Bin
+
+Puma and Passenger, Multiple Threading
+Unicorn,  single Threading
+
+
+Slow clients(buffering)
+Unicorn no buffering, requests go directly to a worker process
+
+
 1. Slow clients
   need buffering
   In the Ruby app server ecosystem, 
@@ -10,8 +21,7 @@ http://blog.scoutapp.com/articles/2017/02/10/which-ruby-app-server-is-right-for-
   Only when the request has completed is it 
   passed on to an available worker.
 
-  Puma and Passenger are equipped to 
-  handle slow clients. 
+  Puma and Passenger can handle slow clients. 
   Unicorn cannot help with slow clients by itself: 
   requests go directly to a worker process. 
   "You should not allow unicorn to serve clients outside of your local network".
