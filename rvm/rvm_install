@@ -10,6 +10,8 @@ rvm to implode
   sudo apt-add-repository ppa:rael-gc/rvm
   sudo apt-get update
   sudo apt-get install rvm
+  
+  sudo apt-get --purge remove
 
   apt-get install software-properties-common
   apt-add-repository ppa:brightbox/ruby-ng
