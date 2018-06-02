@@ -1,3 +1,5 @@
+source /etc/profile.d/rvm.sh
+
 Usually install ruby/rails as a normal user
 That use need to be in rvm group
 
