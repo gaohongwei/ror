@@ -1,9 +1,17 @@
-apt-get install software-properties-common
-sudo apt-add-repository ppa:rael-gc/rvm
-sudo apt-get update
-sudo apt-get install rvm
+=================== Remove RVM
+rvm to implode
+=================== Install RVM
+  curl 2>/dev/null >/dev/null || apt-get install curl -y
+  rvm  2>/dev/null >/dev/null || \curl -sSL https://get.rvm.io
+  rvm  2>/dev/null >/dev/null || \curl -sSL https://get.rvm.io | bash -s stable
+  rvm  2>/dev/null >/dev/null || \curl -sSL https://get.rvm.io | bash -s stable --rails
+=================== Install RVM as pkg
+  apt-get install software-properties-common
+  sudo apt-add-repository ppa:rael-gc/rvm
+  sudo apt-get update
+  sudo apt-get install rvm
 
-apt-get install software-properties-common
-apt-add-repository ppa:brightbox/ruby-ng
-apt-get update
-apt-get install ruby2.2
+  apt-get install software-properties-common
+  apt-add-repository ppa:brightbox/ruby-ng
+  apt-get update
+  apt-get install ruby2.2
