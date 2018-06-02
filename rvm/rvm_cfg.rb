@@ -1,11 +1,3 @@
-=================== Install RVM
-curl 2>/dev/null >/dev/null || apt-get install curl -y
-rvm  2>/dev/null >/dev/null || \curl -sSL https://get.rvm.io
-rvm  2>/dev/null >/dev/null || \curl -sSL https://get.rvm.io | bash -s stable
-rvm  2>/dev/null >/dev/null || \curl -sSL https://get.rvm.io | bash -s stable --rails
-=================== Install Ruby New Version (Rails/gemset)
-source /etc/profile.d/rvm.sh
-
 Usually install ruby/rails as a normal user
 That use need to be in rvm group
 
