@@ -9,12 +9,15 @@ So we have
   class CloudApp2 < CloudApp
   class CloudApp3 < CloudApp
 
-main
-  case type
-  when 'app1'
-    app = CloudApp1
-  when 'app2'
-    app = CloudApp2
+class CloudAppfactory
+  def self.getApp(type)
+    case type
+    when 'app1'
+      app = CloudApp1
+    when 'app2'
+      app = CloudApp2
+    else
+      nil
+    end
   end
-
-  app.call_method
+end
