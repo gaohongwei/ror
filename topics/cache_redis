@@ -1,3 +1,14 @@
+Why use redis instead of using memory cache
+  memory cache is only for web serevr, cannot be shared by multiple web serevr
+
+Redis is single thread, what is the limitation
+  Request per second
+    Set requests per second, 20K
+    GET requests per second, 25K
+
+How to support more servers
+  Cluster
+  
 http://guides.rubyonrails.org/caching_with_rails.html#activesupport-cache-rediscachestore
 1. Rails.cache.fetch, read/write cache
   class Product < ApplicationRecord
@@ -22,4 +33,20 @@ config.cache_store = :redis_store, redis_config
     db: 0, # retry
     namespace: 'prod-cache',
     expires_in: 180.minutes
+  }
+  
+3. Multiple redis server
+  http://guides.rubyonrails.org/caching_with_rails.html#activesupport-cache-rediscachestore
+  cache_servers = %w(redis://cache-01:6379/0 redis://cache-02:6379/0)
+  config.cache_store = :redis_cache_store, { url: cache_servers,
+
+    connect_timeout: 30,  # Defaults to 20 seconds
+    read_timeout:    0.2, # Defaults to 1 second
+    write_timeout:   0.2, # Defaults to 1 second
+
+    error_handler: -> (method:, returning:, exception:) {
+      # Report errors to Sentry as warnings
+      Raven.capture_exception exception, level: 'warning',
+        tags: { method: method, returning: returning }
+    }
   }
