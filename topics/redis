@@ -1,0 +1,11 @@
+Why use redis instead of using memory cache
+  memory cache is only for web serevr, cannot be shared by multiple web serevr
+
+Redis is single thread, what is the limitation
+  Request per second
+    Set requests per second, 20K
+    GET requests per second, 25K
+
+How to support more servers
+  Cluster
+  
