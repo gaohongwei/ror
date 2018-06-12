@@ -1,3 +1,6 @@
+Why cache?
+  Some call takes long time and will be reused
+
 Why use redis instead of using memory cache
   memory cache is only for web serevr, cannot be shared by multiple web serevr
 
