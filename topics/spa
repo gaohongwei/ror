@@ -1,0 +1,7 @@
+SPA pros
+  fast
+  SPA can cache any local storage effectively.
+
+SPA Cons
+  difficult to optimizate SEO 
+  slow to download the first time
