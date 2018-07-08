@@ -1,0 +1,7 @@
+Gem
+  resque, process
+  sidekiq, thread
+  
+Config
+  run as system service
+  initializer
