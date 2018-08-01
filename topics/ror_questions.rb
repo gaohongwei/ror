@@ -1,3 +1,8 @@
+##### Collected questions #####
+ why update_all is faster than update?
+   It skips validations
+
+
 https://career.guru99.com/top-34-ruby-on-rail-interview-questions/
 46) Mention what is the syntax for Ruby collect Iterator?
 
