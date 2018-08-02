@@ -1,6 +1,23 @@
 # https://github.com/mperham/sidekiq/wiki/Error-Handling
+# https://github.com/mperham/sidekiq/wiki/Using-Redis
 
+# Using an ENV variable
+    heroku config:set REDIS_PROVIDER=REDISTOGO_URL
+
+Using an initializer
 # this goes in your initializer
+# config/initializers/sidekiq.rb
+
+# configure the location of Redis
+Sidekiq.configure_server do |config|
+  config.redis = { url: 'redis://redis.example.com:7372/12' }
+end
+
+Sidekiq.configure_client do |config|
+  config.redis = { url: 'redis://redis.example.com:7372/12' }
+end
+
+# Error handling
 Sidekiq.configure_server do |config|
   config.error_handlers << Proc.new {|ex,ctx_hash| MyErrorService.notify(ex, ctx_hash) }
 end
