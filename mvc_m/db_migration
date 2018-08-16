@@ -1,3 +1,4 @@
+rake db:version
 
 rake db:migrate #runs all the migrations that have not yet been run. 
 rake db:migrate VERSION=20080906120000
