@@ -1,0 +1,6 @@
+render html: '<strong>HTML String</strong>' # render with `text/html` MIME type
+
+render plain: 'plain text' # render with `text/plain` MIME type
+
+render body: 'raw body' # render raw content, does not set content type, inherits 
+                        # default content type, which currently is `text/html`
