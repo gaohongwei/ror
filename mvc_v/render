@@ -16,3 +16,6 @@ render html as text?
 
   strip_tags("<div id='top-bar'>Welcome to my website!</div>")
   # => Welcome to my website!
+
+  strip_tags("<div id='top-bar' class='ABC'>Welcome to my website!</div>")
+  # => "Welcome to my website!"
