@@ -4,3 +4,15 @@ render plain: 'plain text' # render with `text/plain` MIME type
 
 render body: 'raw body' # render raw content, does not set content type, inherits 
                         # default content type, which currently is `text/html`
+
+
+render html as text?
+  https://apidock.com/rails/ActionView/Helpers/SanitizeHelper/strip_tags
+  strip_tags("Strip <i>these</i> tags!")
+  # => Strip these tags!
+
+  strip_tags("<b>Bold</b> no more!  <a href='more.html'>See more here</a>...")
+  # => Bold no more!  See more here...
+
+  strip_tags("<div id='top-bar'>Welcome to my website!</div>")
+  # => Welcome to my website!
