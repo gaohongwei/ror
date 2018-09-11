@@ -23,3 +23,5 @@ Will do nothing if it has already been run.
 
 rake db:migrate:up   VERSION=20080906120000
 rake db:migrate:redo VERSION=20080906120000
+
+rake db:migrate:down VERSION=20080906120000
