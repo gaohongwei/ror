@@ -6,6 +6,11 @@ gem "my_common", '0.1.0', path: "./gems"
 gem 'pry', path: './pry'
 
 
+bundle config local.default_controller  ./gems
+bundle config
+bundle config --delete local.default_controller
+
+
 You can install gems into a specific folder (example ./vendor/):
 bundle install --path vendor
 
