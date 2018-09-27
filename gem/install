@@ -1,2 +1,6 @@
 bundle 
 bundle update abc
+
+# Install gems from local directory
+gem "my_common", '0.1.0', path: "./gems"
+gem 'pry', path: './pry'
