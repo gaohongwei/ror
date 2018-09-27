@@ -8,3 +8,7 @@ gem 'pry', path: './pry'
 
 You can install gems into a specific folder (example ./vendor/):
 bundle install --path vendor
+
+# Packag Gem Dependencies for Ruby Applications
+bundle package
+ls vendor/cache
