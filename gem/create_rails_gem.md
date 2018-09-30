@@ -1,5 +1,6 @@
 # Integrate Gem/Engine and main Rails app
-
+## Source
+- https://gist.github.com/maxivak/5d428ade54828836e6b6#controllers
 ## Overview
 - [Paths](#paths)
 - [Routes](#routes)
