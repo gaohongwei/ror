@@ -1,5 +1,4 @@
   actions :index, :edit
-  # or: config.clear_action_items! 
   config.remove_action_item(:new)
   config.clear_action_items!
 
@@ -11,6 +10,12 @@
   action_item only: [:edit, :show] do
     @post = Post.find(params[:id])
     link_to 'Publish', publish_admin_post_path(post), method: :put
+  end
+  action_item :view_site do
+    link_to "create data_file", '/books/new'
+  end
+  action_item :view, only: :show do
+    link_to 'View on site', post_path(post) if post.published?
   end
 
   config.display_action_items :index => :new, :edit => :destroy, :show => [:edit, :destroy, :custom_action]
