@@ -1,3 +1,5 @@
+http://railscasts.com/episodes/139-nested-resources
+
 ActionController::Routing::Routes.draw do |map|
   map.resources :articles, :has_many => :comments, :shallow => true
   map.resources :comments, :only => [:index]
