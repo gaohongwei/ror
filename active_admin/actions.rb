@@ -1,3 +1,5 @@
+  config.remove_action_item(:new)
+
   config.clear_action_items!
 
   action_item(only: :index) {
