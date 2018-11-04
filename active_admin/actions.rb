@@ -1,3 +1,15 @@
+## Way 1
+  controller do
+    def action_methods
+      params[:project_id].blank? ? super - ['new'] : super
+    end
+  end
+## Way 2
+  config.remove_action_item(:new)
+  action_item(only: :index) {
+    link_to "new", new_project_data_file_path(params[:project_id]) if params[:project_id].present?
+  }
+##
   actions :index, :edit
   config.remove_action_item(:new)
   config.clear_action_items!
@@ -19,9 +31,3 @@
   end
 
   config.display_action_items :index => :new, :edit => :destroy, :show => [:edit, :destroy, :custom_action]
-
-  controller do
-    def action_methods
-      params[:project_id].blank? ? super - ['new'] : super
-    end
-  end
