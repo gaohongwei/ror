@@ -4,9 +4,18 @@ ActiveAdmin.register Product do
   end
   
   controller do
+    def call_before_create(offer)
+    end
+    def create
+      params[:item].merge!({ user_id: current_curator.id })
+      create!
+    end   
+  end
+
+  controller do
     skip_before_action :authorize_user!   
     
-    before_action :assign_user, :only => :create
+    before_action :assign_user, :only => :create # not working
     before_filter :my_filter, only: [:edit, :show]
     
     private
