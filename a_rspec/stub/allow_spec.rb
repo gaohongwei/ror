@@ -1,3 +1,7 @@
+### Redirect calls
+  allow(Search::AddToIndexJob).to receive(:perform_later) do |*arg|
+    Search::AddToIndexJob.perform_now(*arg)
+  end
 
 find  spec -name *.rb|xargs grep allow|sed -e "s/.*allow/allow/"
 
