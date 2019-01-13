@@ -1,3 +1,8 @@
+Start it
+  command line
+    bundle exec sidekiq
+  service
+    https://github.com/mperham/sidekiq/tree/master/examples/systemd
 Mount the web ui
   https://github.com/mperham/sidekiq/wiki/Monitoring
   # config/routes.rb
