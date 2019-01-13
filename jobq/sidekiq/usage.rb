@@ -1,6 +1,7 @@
 Start it
   command line
-    bundle exec sidekiq
+    bundle exec sidekiq -q highQ,lowQ
+    bundle exec sidekiq -q deafultQ
   service
     https://github.com/mperham/sidekiq/tree/master/examples/systemd
 Mount the web ui
