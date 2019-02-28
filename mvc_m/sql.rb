@@ -6,6 +6,11 @@ this is a very thin wrapper around the actual result returned from libmysqlclien
 This means you have to free the memory of the result table, 
 failing to do so will result in erratic query times 
 because somewhere a garbage collector will do it for you.
+    
+    def run_sql(sql)
+      ActiveRecord::Base.connection.execute(sql)
+    end
+  
 class Person < ActiveRecord::Base
   # Returns the last name of someone given the ID
   def self.last_name(id)
