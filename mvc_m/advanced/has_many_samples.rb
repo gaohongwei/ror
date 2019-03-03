@@ -1,15 +1,36 @@
-======== source ========
-:source define the associated model name for has_many through association
-======== :class_name ========
-:class_name define model name in a simple foreign key relationship.     
-apply to belongs_to/has_many/has_one(no through)
-If the name of the other model cannot be derived from the association name, 
-you can use the :class_name option to supply the model name.
-class_name: 'Group'
-======== :foreign_key ========
-The :foreign_key option lets you set the name of the foreign key 
-  used in the other model
-Can be on belongs_to and has_many (no through) 
+2. has_many through sample,  source
+  has_many :owned_groups, class_name: 'Group'
+  has_many :joined_groups, -> { where(user_groups: { status: 3 }) },   through: :user_groups, source: :group
+  has_many :applied_groups, -> { where(user_groups: { status: 1 }) },  through: :user_groups, source: :group
+  has_many :accepted_groups, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
+  has_many :approved_groups, -> { where(user_groups: { status: 2 }) }, through: :user_groups, source: :group
+3. has_many through sample
+  rails g scaffold disease name:string
+  rails g scaffold symptom name:string
+  rails g scaffold disease_symptom disease_id:integer symptom_id:integer --skip-controller
+
+  class Symptom < ActiveRecord::Base
+    has_many :disease_symptoms
+    has_many :diseases, :through => :disease_symptoms
+  end
+
+  class Disease < ActiveRecord::Base
+    has_many :disease_symptoms
+    has_many :symptoms, :through => :disease_symptoms
+  end
+
+  class DiseaseSymptom < ActiveRecord::Base
+    belongs_to :disease
+    belongs_to :symptom
+  end
+
+<%= semantic_form_for @disease do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :name %>
+    <%= f.input :symptoms, :as => :check_boxes, :required => false %>
+<%= f.actions %>
+  <% end %>
+<% end %>
 ======== Sample 1 ========  
 class MlMethod 
   has_many :parameters, foreign_key: :method_id, class_name: 'MethodParameter'
