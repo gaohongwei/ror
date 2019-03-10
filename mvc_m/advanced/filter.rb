@@ -1,3 +1,12 @@
+Filter
+  https://ducktypelabs.com/four-ways-to-filter-has_many-associations/
+  User.joins(:projects).where(projects: { zipcode: 30332 })
+  User.joins(:projects).merge(Project.opened_recently)
+  User.joins(:projects).merge(Project.opened_recently).uniq
+
+  User.includes(:projects).where(projects: { zipcode: '30332' })
+  User.includes(:projects).merge(Project.opened_recently).references(:projects)
+
 Add has_one on has_many
 
 Approach 1 - Add a new association
