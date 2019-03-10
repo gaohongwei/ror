@@ -24,10 +24,12 @@ Data Model
   end
   class Project < ApplicationRecord
     has_many :memberships, as: :memberable, dependent: :destroy
+    # FK: memberable_type: Project, memberable_id: id
     has_many :users, through: :memberships
   end
   class Group < ApplicationRecord
     has_many :memberships, as: :memberable, dependent: :destroy
+    # FK: memberable_type: Group, memberable_id: id
     has_many :users, through: :memberships
   end
   class User < ApplicationRecord
