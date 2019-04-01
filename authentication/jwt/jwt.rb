@@ -13,7 +13,8 @@ class JsonWebToken
 end
 
 class User < ApplicationRecord
-  has_secure_password # from gem bcrypt
+  has_secure_password # from gem bcrypt, 
+  # provide user.authenticate(password)
   mount_uploader :avatar, AvatarUploader
   validates :email, presence: true, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -22,11 +23,19 @@ class User < ApplicationRecord
             length: { minimum: 6 },
             if: -> { new_record? || !password.nil? }
 
-  # should move into common module
-  def self.find_cached(user_id)
-    user_key = "User_#{user_if}"
-    Rails.cache.fetch(user_key){
+  class << self
+     # should move into common module
+    def find_cached(user_id)
+      user_key = "User_#{user_if}"
+      Rails.cache.fetch(user_key){
+        prepare_cache(id)
+      }
+    end
+
+    def prepare_cache(id)
+      # this will be overwiten by including class
+      # for example, for eager loading
       find_by(id:user_id)
-    }
+    end
   end
 end
