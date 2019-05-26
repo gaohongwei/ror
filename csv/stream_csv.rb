@@ -1,15 +1,24 @@
 class TransactionsController
   def index
+    file_name = "transactions.csv"
     respond_to do |format|
-      format.csv render_csv
+      format.csv render_csv(file_name, data)
     end
   end
 
-  def render_csv
-    set_headers
+  def render_csv(file_name, data)
+    #file_name = "transactions.csv"
+    headers["Content-Type"] = "text/csv"
+    headers["Content-disposition"] = "attachment; filename=\"#{file_name}\""
+
+    headers['X-Accel-Buffering'] = 'no'
+
+    headers["Cache-Control"] ||= "no-cache"
+    headers.delete("Content-Length")
+    
     response.status = 200
     #setting the body to an enumerator, rails will iterate this enumerator
-    self.response_body = csv_lines(filters)
+    self.response_body = data
   end
 
   def csv_lines
@@ -20,14 +29,4 @@ class TransactionsController
     end
   end
 
-  def set_headers
-    file_name = "transactions.csv"
-    headers["Content-Type"] = "text/csv"
-    headers["Content-disposition"] = "attachment; filename=\"#{file_name}\""
-
-    headers['X-Accel-Buffering'] = 'no'
-
-    headers["Cache-Control"] ||= "no-cache"
-    headers.delete("Content-Length")
-  end
 end
