@@ -1,0 +1,47 @@
+# https://medium.com/rails-ember-beyond/error-handling-in-rails-the-modular-way-9afcddd2fe1b
+# Never rescue from Exception.
+
+  It tries to handle every single exception inherited from the Exception class and 
+  ultimately stops the execution.
+
+  # Rescues from all types of Exceptions inside the block
+  #   Rescue an Exception would propagate and 
+  #   handle every subclass of Exception and 
+  #   stops the execution.
+  
+  #wrong
+    begin
+      @user = User.find_by!(id: 1)
+    rescue Exception => e # Never do this!
+      print e
+    end
+    
+# Should rescue from StandardError
+# Since every error & exception class inherits from StandardError it is sufficient to 
+# Rescue from StandardError.
+  # correct
+    begin
+      @user = User.find_by!(id: 1)
+    rescue StandardError => e
+      print e
+    end
+   
+# Approaches
+  # Best approach
+    Create a module ErrorHandler(error_handler.rb) ib lib/error 
+    include it in our ApplicationController.
+  # Better approach
+    write in under ApplicationController    
+  # works, but not good
+  # Not DRY
+    class UsersController < ApplicationController
+      def show
+        @user = User.find(params[:id])
+        render json: @user, status: :ok
+      rescue ActiveRecord::RecordNotFound => e
+        render json: {
+          error: e.to_s
+        }, status: :not_found
+      end
+    end
+  
