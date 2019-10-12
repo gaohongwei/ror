@@ -4,6 +4,13 @@ Nginx:
 Dyno:
   one bigger vs several small ones
 
+Requests buffer
+  Some request may take long time
+  Buffer requests into middleware
+    kafka
+    message queue
+    jobq
+
 Cache:
   data:
     Find repreated used data
