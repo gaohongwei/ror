@@ -1,0 +1,16 @@
+#  https://stackoverflow.com/questions/33023116/active-admin-config-sort-for-two-columns
+
+# https://github.com/activeadmin/activeadmin/blob/master/lib/active_admin/resource_controller/data_access.rb#L50
+
+ActiveAdmin suggests overwrite the find_collection method, which returns an ActiveRecord::Relation. 
+But I prefer add the order to it's output.
+  ActiveAdmin.register ABC do
+
+    controller do
+      def find_collection(options = {})
+        super.reorder(rider_last_name: :asc, start_time: :asc)
+      end
+    end
+
+    ...
+  end
