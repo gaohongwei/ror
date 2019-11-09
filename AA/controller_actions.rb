@@ -2,6 +2,10 @@ Custom Controller Actions
 
 Modifying the Controller
   ActiveAdmin.register Post do
+  belongs_to :project
+  actions :new, :create
+  permit_params :title, :short_description, :description
+    
     controller do
       # This code is evaluated within the controller class
 
