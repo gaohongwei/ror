@@ -1,7 +1,9 @@
-// 1. Pass  data from rails to javascript
+// 1. Pass  data from slim to javascript
   // slim, cannot pass array
-  var js_array = #{raw rails__array};
-  var sheet_columns = "#{rails_var}"; 
+  var sheet_columns = "#{rails_var}";  
+  let msg_no_model_name = '#{tt("no_model_name")}';
+  let msg_no_method_id = '#{tt("no_method")}';
+  // var js_array = #{raw rails__array};
   // erb
   var js_array = <%= rails__array %>
   var js_var = <%= rails_var %>
